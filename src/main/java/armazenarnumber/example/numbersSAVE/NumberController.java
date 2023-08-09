@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/api/number")
+@RestController
+@RequestMapping("/api")
 public class NumberController {
 
     @Autowired
     private NumberService numberService;
 
     @PostMapping("/add")
-    public ResponseEntity<?> processar(@RequestBody List<Integer> numero) {
+    public ResponseEntity<?> processar (@RequestBody dados numero) {
 
-        Number number = this.numberService.processar(numero);
-        return ResponseEntity.ok(number);
+
+        return ResponseEntity.ok(numberService.processar(numero.getDados()));
 
     }
 }
