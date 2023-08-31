@@ -1,14 +1,14 @@
 package armazenarnumber.example.numbersSAVE;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,8 +17,9 @@ public class NumberService {
     @Autowired
     private dadosRepository numberRepository;
 
-@Transactional
+        @Transactional
         public ResponseEntity<?> processar(List<Integer> number){
+
             if(number.size() > 20){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }else{
@@ -31,8 +32,7 @@ public class NumberService {
                 }
                 numberes.setMedia(soma / number.size());
                 return ResponseEntity.ok(numberes);
+
             }
-
     }
-
 }
